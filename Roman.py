@@ -1,4 +1,4 @@
-def romanToInt(s: str) -> int:
+def romanToInt(self, s: str) -> int:
     """
     Converts a Roman numeral string (s) to an integer.
 
