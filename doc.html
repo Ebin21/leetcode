@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Price Calculator</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    label, input { display: block; margin: 10px 0; }
+</style>
+</head>
+<body>
+<h2>🛒 Product Price Calculator</h2>
+ 
+  <!-- Input fields for product details -->
+<label for="productName">Product Name:</label>
+<input type="text" id="productName">
+ 
+  <label for="unitPrice">Unit Price (₹):</label>
+<input type="number" id="unitPrice">
+ 
+  <label for="quantity">Quantity:</label>
+<input type="number" id="quantity">
+ 
+  <button onclick="calculateTotal()">Calculate Total</button>
+ 
+  <!-- Output area -->
+<p id="output"></p>
+ 
+  <script>
+    // Function to calculate total price
+    function calculateTotal() {
+      const name = document.getElementById("productName").value;
+      const price = parseFloat(document.getElementById("unitPrice").value);
+      const qty = parseInt(document.getElementById("quantity").value);
+ 
+      if (!name || isNaN(price) || isNaN(qty)) {
+        document.getElementById("output").innerText = "Please enter valid product details.";
+        return;
+      }
+ 
+      const total = price * qty;
+      document.getElementById("output").innerText = 
+        `Total price for ${qty} x ${name} is ₹${total.toFixed(2)}.`;
+    }
+</script>
+</body>
+</html>

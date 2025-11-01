@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Price Calc</title>
+</head>
+<body>
+<h3>Product Price</h3>
+ 
+  Product: <input type="text" id="p"><br>
+  Price: <input type="number" id="pr"><br>
+  Qty: <input type="number" id="q"><br>
+<button onclick="calc()">Get Total</button>
+ 
+  <p id="res"></p>
+ 
+  <script>
+    function calc() {
+      var p = document.getElementById("p").value;
+      var pr = document.getElementById("pr").value;
+      var q = document.getElementById("q").value;
+      var t = pr * q;
+      document.getElementById("res").innerHTML = "Total: ₹" + t;
+    }
+</script>
+</body>
+</html>
