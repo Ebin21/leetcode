@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Programming Paradigms Demo</title>
+<style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      margin: 40px;
+
+    }
+
+    label, select, input, button {
+
+      margin: 10px 0;
+
+      display: block;
+
+    }
+
+    .output {
+
+      margin-top: 20px;
+
+      font-weight: bold;
+
+    }
+</style>
+</head>
+<body>
+<h2>Programming Paradigm Validation</h2>
+ 
+  <label for="paradigm">Choose Paradigm:</label>
+<select id="paradigm">
+<option value="defensive">Defensive Programming</option>
+<option value="offensive">Offensive Programming</option>
+<option value="secure">Secure Programming</option>
+</select>
+ 
+  <label for="age">Enter Your Age:</label>
+<input type="text" id="age" placeholder="e.g., 25">
+ 
+  <button onclick="validate()">Validate</button>
+ 
+  <div class="output" id="output"></div>
+ 
+  <script>
+
+    function validate() {
+
+      const paradigm = document.getElementById("paradigm").value;
+
+      const ageInput = document.getElementById("age").value;
+
+      const output = document.getElementById("output");
+ 
+      if (paradigm === "defensive") {
+
+        // 🛡️ Defensive Programming
+
+        const age = parseInt(ageInput.trim(), 10);
+
+        if (isNaN(age)) {
+
+          output.textContent = "Please enter a valid number.";
+
+          return;
+
+        }
+
+        if (age < 0 || age > 120) {
+
+          output.textContent = "Age must be between 0 and 120.";
+
+          return;
+
+        }
+
+        output.textContent = "Defensive: Age accepted → " + age;
+ 
+      } else if (paradigm === "offensive") {
+
+        // ⚔️ Offensive Programming
+
+        try {
+
+          const age = parseInt(ageInput, 10);
+
+          console.assert(!isNaN(age), "Age must be a number");
+
+          console.assert(age >= 0 && age <= 120, "Age out of bounds");
+
+          output.textContent = "Offensive: Age accepted → " + age;
+
+        } catch (e) {
+
+          output.textContent = "Offensive: Validation failed → " + e.message;
+
+        }
+ 
+      } else if (paradigm === "secure") {
+
+        // 🔐 Secure Programming
+
+        const sanitized = ageInput.replace(/[^0-9]/g, "");
+
+        const age = parseInt(sanitized, 10);
+
+        if (isNaN(age) || age < 0 || age > 120) {
+
+          output.textContent = "Secure: Invalid or unsafe input detected.";
+
+          return;
+
+        }
+
+        output.textContent = "Secure: Age accepted → " + age;
+
+      }
+
+    }
+</script>
+</body>
+</html>
+
+ 
